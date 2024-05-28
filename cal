@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>총 길이 계산기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 850px;
+            text-align: center;
+        }
+        .calculator h1 {
+            color: red;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+        .input-group label {
+            margin-right: 5px;
+            flex: 0 0 auto;
+        }
+        .input-group .length-input {
+            width: 150px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+        .input-group .quantity-input {
+            width: 60px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #5bc0de;
+            color: #fff;
+            text-align: center;
+            display: inline-block;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .result, .sub-result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #333;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .sub-result {
+            font-size: 1.2em;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h1>디엔에스스틸 주문방법 계산기</h1>
+    <form id="calculatorForm">
+        <div class="input-group">
+            <label for="length1">파이프길이 1 (mm):</label>
+            <input type="number" id="length1" class="length-input" placeholder="길이" step="0.01">
+            <label for="quantity1">수량 1:</label>
+            <input type="number" id="quantity1" class="quantity-input" placeholder="수량" step="1">
+        </div>
+        <div class="input-group">
+            <label for="length2">파이프길이 2 (mm):</label>
+            <input type="number" id="length2" class="length-input" placeholder="길이" step="0.01">
+            <label for="quantity2">수량 2:</label>
+            <input type="number" id="quantity2" class="quantity-input" placeholder="수량" step="1">
+        </div>
+        <div class="input-group">
+            <label for="length3">파이프길이 3 (mm):</label>
+            <input type="number" id="length3" class="length-input" placeholder="길이" step="0.01">
+            <label for="quantity3">수량 3:</label>
+            <input type="number" id="quantity3" class="quantity-input" placeholder="수량" step="1">
+        </div>
+        <div class="input-group">
+            <label for="length4">파이프길이 4 (mm):</label>
+            <input type="number" id="length4" class="length-input" placeholder="길이" step="0.01">
+            <label for="quantity4">수량 4:</label>
+            <input type="number" id="quantity4" class="quantity-input" placeholder="수량" step="1">
+        </div>
+        <div class="input-group">
+            <label for="length5">파이프길이 5 (mm):</label>
+            <input type="number" id="length5" class="length-input" placeholder="길이" step="0.01">
+            <label for="quantity5">수량 5:</label>
+            <input type="number" id="quantity5" class="quantity-input" placeholder="수량" step="1">
+        </div>
+        <div class="input-group">
+            <label for="length6">파이프길이 6 (mm):</label>
+            <input type="number" id="length6" class="length-input" placeholder="길이" step="0.01">
+            <label for="quantity6">수량 6:</label>
+            <input type="number" id="quantity6" class="quantity-input" placeholder="수량" step="1">
+        </div>
+        <div class="input-group">
+            <label for="length7">파이프길이 7 (mm):</label>
+            <input type="number" id="length7" class="length-input" placeholder="길이" step="0.01">
+            <label for="quantity7">수량 7:</label>
+            <input type="number" id="quantity7" class="quantity-input" placeholder="수량" step="1">
+        </div>
+        <div class="input-group">
+            <label for="length8">파이프길이 8 (mm):</label>
+            <input type="number" id="length8" class="length-input" placeholder="길이" step="0.01">
+            <label for="quantity8">수량 8:</label>
+            <input type="number" id="quantity8" class="quantity-input" placeholder="수량" step="1">
+        </div>
+        <div class="input-group">
+            <label for="length9">파이프길이 9 (mm):</label>
+            <input type="number" id="length9" class="length-input" placeholder="길이" step="0.01">
+            <label for="quantity9">수량 9:</label>
+            <input type="number" id="quantity9" class="quantity-input" placeholder="수량" step="1">
+        </div>
+        <div class="input-group">
+            <label for="length10">파이프길이 10 (mm):</label>
+            <input type="number" id="length10" class="length-input" placeholder="길이" step="0.01">
+            <label for="quantity10">수량 10:</label>
+            <input type="number" id="quantity10" class="quantity-input" placeholder="수량" step="1">
+        </div>
+        <div class="button" type="button" onclick="calculateTotalLength()">계산하기</div>
+    </form>
+    <div class="result" id="result">총 길이: 0 mm</div>
+    <div class="sub-result" id="resultM">구매 수량: 0 m</div>
+    <div class="sub-result" id="cuttingFee">절단비: 0 회</div>
+</div>
+
+<script>
+    function calculateTotalLength() {
+        let totalLength = 0;
+        let cuttingFee = 0;
+
+        for (let i = 1; i <= 10; i++) {
+            const length = parseFloat(document.getElementById('length' + i).value);
+            const quantity = parseInt(document.getElementById('quantity' + i).value);
+            
+            if (!isNaN(length) && !isNaN(quantity) && length > 0 && quantity > 0) {
+                totalLength += length * quantity;
+                if (length <= 1000) {
+                    cuttingFee += quantity;
+                }
+            }
+        }
+
+        const totalLengthM = Math.ceil(totalLength / 1000);
+
+        document.getElementById('result').textContent = `총 길이: ${totalLength} mm`;
+        document.getElementById('resultM').textContent = `구매 수량: ${totalLengthM} m`;
+        document.getElementById('cuttingFee').textContent = `절단비: ${cuttingFee} 회`;
+    }
+</script>
+
+</body>
+</html>
